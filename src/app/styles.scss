@@ -1,6 +1,7 @@
 $button-primary-color: #1677ff;
 $button-color-changing-percentage: 8%;
 $border-radius: 5px;
+$button-infor-color: #17a2b8;
 
 .container {
   display: flex;
@@ -28,8 +29,10 @@ $border-radius: 5px;
   &__button {
     background-color: $button-primary-color;
     margin-block: 1rem;
-    width: 4rem;
-    height: 2rem;
+    padding: 0.6rem;
+    text-transform: uppercase;
+    width: fit-content;
+    height: fit-content;
     border-radius: $border-radius;
     border: 1px solid #d1d1d1;
     cursor: pointer;
@@ -46,6 +49,22 @@ $border-radius: 5px;
         $button-primary-color,
         $button-color-changing-percentage
       );
+    }
+
+    &--copy {
+      background-color: $button-infor-color;
+      &:hover {
+        background-color: lighten(
+          $button-infor-color,
+          $button-color-changing-percentage
+        );
+      }
+      &:active {
+        background-color: darken(
+          $button-infor-color,
+          $button-color-changing-percentage
+        );
+      }
     }
   }
 }
