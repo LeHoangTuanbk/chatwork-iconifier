@@ -37,6 +37,7 @@ $button-infor-color: #17a2b8;
     border: 1px solid #d1d1d1;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    box-shadow: 2px 3px 4px 0px rgba(0, 0, 0, 0.2);
 
     &:hover {
       background-color: lighten(
