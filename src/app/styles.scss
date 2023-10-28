@@ -1,71 +1,97 @@
-$button-primary-color: #1677ff;
-$button-color-changing-percentage: 8%;
+$clr-primary: #1677ff;
+$clr-secondary: #17a2b8;
+$clr-grey: #d1d1d1;
+$changing-percentage: 8%;
 $border-radius: 5px;
-$button-infor-color: #17a2b8;
 
 .container {
   display: flex;
+  justify-content: center;
+}
+
+.app {
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  margin-top: 3rem;
-  margin-inline: 3rem;
+  margin: 2rem 2rem;
+  max-width: 1024px;
   color: black;
 
   &__title {
     font-size: 3rem;
-    font-weight: 300;
+    font-weight: 400;
     margin-block: 1rem;
     text-align: center;
   }
+}
 
-  &__textarea {
-    border-color: 1px solid #d1d1d1;
-    border-radius: $border-radius;
-    background-color: white;
-    padding: 1rem;
-    margin-block: 1rem;
-    color: black;
+.textarea {
+  display: block;
+  border-color: 1px solid;
+  border-radius: $border-radius;
+  background-color: white;
+  margin-block: 1rem;
+  padding: 1rem;
+  color: black;
+}
+
+.button {
+  margin-block: 1rem;
+  padding: 0.6rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $clr-primary;
+  text-transform: uppercase;
+  border: 1px solid $clr-grey;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  box-shadow: 2px 3px 4px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($clr-primary, $changing-percentage);
+    transform: scale(1.02);
+  }
+  &:active {
+    background-color: darken($clr-primary, $changing-percentage);
+    transform: active(0.98);
   }
 
-  &__button {
-    background-color: $button-primary-color;
-    margin-block: 1rem;
-    padding: 0.6rem;
-    text-transform: uppercase;
-    width: fit-content;
-    height: fit-content;
-    border-radius: $border-radius;
-    border: 1px solid #d1d1d1;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    box-shadow: 2px 3px 4px 0px rgba(0, 0, 0, 0.2);
-
+  &--copy {
+    background-color: $clr-secondary;
     &:hover {
-      background-color: lighten(
-        $button-primary-color,
-        $button-color-changing-percentage
-      );
+      background-color: lighten($clr-secondary, $changing-percentage);
     }
     &:active {
-      background-color: darken(
-        $button-primary-color,
-        $button-color-changing-percentage
-      );
+      background-color: darken($clr-secondary, $changing-percentage);
     }
+  }
+}
 
-    &--copy {
-      background-color: $button-infor-color;
-      &:hover {
-        background-color: lighten(
-          $button-infor-color,
-          $button-color-changing-percentage
-        );
-      }
-      &:active {
-        background-color: darken(
-          $button-infor-color,
-          $button-color-changing-percentage
-        );
-      }
+@media screen and (max-width: 1024px) {
+  .container {
+    margin-inline: 3rem;
+    &__title {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 2rem 1.5rem;
+    .app__title {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin: 2rem 1rem;
+    .app__title {
+      font-size: 1.5rem;
     }
   }
 }
