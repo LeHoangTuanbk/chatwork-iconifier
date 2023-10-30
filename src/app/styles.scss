@@ -17,7 +17,8 @@ $border-radius: 5px;
   display: flex;
   flex-direction: column;
   color: black;
-  margin: 1.5rem;
+  margin-block: 1.5rem;
+  margin-inline: 5rem;
 
   &__title {
     font-size: 3rem;
@@ -102,16 +103,23 @@ $border-radius: 5px;
 
 @media screen and (max-width: 768px) {
   .container {
-    .app__title {
-      font-size: 2rem;
+    .app {
+      margin-inline: 3rem;
+
+      &__title {
+        font-size: 2rem;
+      }
     }
   }
 }
 
 @media screen and (max-width: 480px) {
   .container {
-    .app__title {
-      font-size: 1.8rem;
+    .app {
+      margin-inline: 1.5rem;
+      &__title {
+        font-size: 1.8rem;
+      }
     }
   }
 }
