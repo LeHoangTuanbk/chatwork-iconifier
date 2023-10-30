@@ -61,11 +61,9 @@ export default function Homepage() {
             rows={10}
             onChange={handleOnChangeInput}
           />
-          <div className="">
-            <button className="button" onClick={handleIconify}>
-              Iconify ✨
-            </button>
-          </div>
+          <button className="button" onClick={handleIconify}>
+            Iconify ✨
+          </button>
           <span className="app__output-header">Iconified result 💥</span>
           {outputForUser ? (
             <div className="app__output">{outputForUser}</div>

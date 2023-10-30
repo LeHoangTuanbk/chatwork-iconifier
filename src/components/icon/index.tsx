@@ -12,34 +12,94 @@ import iconRoger from "/public/icons/icon-roger.gif";
 import iconWhew from "/public/icons/icon-whew.gif";
 
 const iconBowGif: React.ReactElement = (
-  <Image src={iconBow} alt="bow" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconBow}
+    alt="bow"
+    height={20}
+    width={20}
+  />
 );
 const iconThinkGif: React.ReactElement = (
-  <Image src={iconThink} alt="think" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconThink}
+    alt="think"
+    height={20}
+    width={20}
+  />
 );
 const iconSmileGif: React.ReactElement = (
-  <Image src={iconSmile} alt="smile" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconSmile}
+    alt="smile"
+    height={20}
+    width={20}
+  />
 );
 const iconBeerGif: React.ReactElement = (
-  <Image src={iconBeer} alt="beer" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconBeer}
+    alt="beer"
+    height={20}
+    width={20}
+  />
 );
 const iconCrackerGif: React.ReactElement = (
-  <Image src={iconCracker} alt="cracker" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconCracker}
+    alt="cracker"
+    height={20}
+    width={20}
+  />
 );
 const iconDanceGif: React.ReactElement = (
-  <Image src={iconDance} alt="dance" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconDance}
+    alt="dance"
+    height={20}
+    width={20}
+  />
 );
 const iconFlexGif: React.ReactElement = (
-  <Image src={iconFlex} alt="flex" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconFlex}
+    alt="flex"
+    height={20}
+    width={20}
+  />
 );
 const iconPleaseGif: React.ReactElement = (
-  <Image src={iconPlease} alt="please" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconPlease}
+    alt="please"
+    height={20}
+    width={20}
+  />
 );
 const iconRogerGif: React.ReactElement = (
-  <Image src={iconRoger} alt="roger" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconRoger}
+    alt="roger"
+    height={20}
+    width={20}
+  />
 );
 const iconWhewGif: React.ReactElement = (
-  <Image src={iconWhew} alt="whew" height={20} width={20} />
+  <Image
+    className="emoji-icon"
+    src={iconWhew}
+    alt="whew"
+    height={20}
+    width={20}
+  />
 );
 
 export {

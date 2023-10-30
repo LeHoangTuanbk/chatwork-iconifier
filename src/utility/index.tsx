@@ -14,7 +14,6 @@ import {
 
 const replaceWithIcons = (text: string) => {
   const replacements: Record<string, React.ReactElement> = {
-    ":)": iconSmileGif,
     "(roger)": iconRogerGif,
     "(flex)": iconFlexGif,
     "(dance)": iconDanceGif,
