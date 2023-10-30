@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import "./styles.scss";
 import { FaRegCopy } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import parse from "html-react-parser";
-
 const textareaMaxLength = 1000;
 const textareaRows = 10;
 
@@ -16,6 +14,9 @@ export default function Homepage() {
 
 今からでも大丈夫です。
 D室も、会議室も使用中なので、廊下のテーブルで    よろしいでしょうか？`;
+
+  const placeholder = "Paste your chatwork message here 🚀";
+  const fakeInput2 = "";
 
   const fakeResultFromOpenAI = `お疲れ様です。
 これからのことを真剣に考えてくれてありがとうございます。(bow)
@@ -35,27 +36,9 @@ D室も、会議室も使用中なので、廊下のテーブルで     よろ�
     // Set output
     setIconifiedOutput(fakeResultFromOpenAI);
     let outputForUser = replaceWithIcons(fakeResultFromOpenAI);
-    let textSplitByLine = textSplit(outputForUser);
-    setOutputForUser(textSplitByLine);
+    setOutputForUser(outputForUser);
     console.log(outputForUser);
     // Show output to user
-  };
-
-  const textSplit = (text: string) => {
-    return text;
-    // const textWithPlaceholder = text.replace(/\n/g, "<br/><br/>");
-    // const textChunks = textWithPlaceholder
-    //   .split("<br/>")
-    //   .map((chunk, index) => (
-    //     <p key={index} dangerouslySetInnerHTML={{ __html: chunk }} />
-    //   ));
-
-    const textChunks = text
-      .split("\n")
-      .map((chunk, index) => (
-        <div key={index} dangerouslySetInnerHTML={{ __html: chunk }} />
-      ));
-    return textChunks;
   };
 
   const replaceWithIcons = (text: string) => {
@@ -102,9 +85,9 @@ D室も、会議室も使用中なので、廊下のテーブルで     よろ�
         <div className="app">
           <h1 className="app__title">Iconify your chatwork messages </h1>
           <textarea
-            className="textarea"
+            className="app__input"
             placeholder="Paste your chatwork message here 🚀"
-            value={fakeInput}
+            defaultValue={fakeInput2}
             required={true}
             maxLength={textareaMaxLength}
             rows={textareaRows}
@@ -114,25 +97,17 @@ D室も、会議室も使用中なので、廊下のテーブルで     よろ�
               Iconify ✨
             </button>
           </div>
-          <span>Iconified result 💥</span>
-          <textarea
-            value={outputForUser}
-            className="textarea"
-            readOnly={true}
-            placeholder="(Results will appear here 😊)"
-            maxLength={textareaMaxLength}
-            rows={textareaRows}
-          >
-            {iconifiedOutput}
-          </textarea>
-
-          <div
-            style={{ whiteSpace: "pre-wrap" }}
-            className="html-content"
-            dangerouslySetInnerHTML={{ __html: outputForUser }}
-          />
-          {/* <div style={{ whiteSpace: "pre-wrap" }}>{outputForUser}</div> */}
-
+          <span className="app__output-header">Iconified result 💥</span>
+          {outputForUser ? (
+            <div
+              className="app__output"
+              dangerouslySetInnerHTML={{ __html: outputForUser }}
+            />
+          ) : (
+            <div className="app__output | place-holder">
+              (Results will appear here 😊)
+            </div>
+          )}
           <button
             className="button button--copy"
             onClick={handleCopyToClipBoard}

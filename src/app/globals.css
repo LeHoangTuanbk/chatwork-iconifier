@@ -77,8 +77,13 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: inherit;
+  font-size: inherit;
 }
 
+html {
+  font-size: 62.5%;
+}
 html,
 body {
   max-width: 100vw;
@@ -90,6 +95,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: white;
   color: black;
+  font-size: 1.6rem;
 }
 
 a {
