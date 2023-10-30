@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import iconBow from "/public/icons/icon-bow.gif";
 import iconThink from "/public/icons/icon-think.gif";
@@ -10,16 +11,36 @@ import iconPlease from "/public/icons/icon-please.gif";
 import iconRoger from "/public/icons/icon-roger.gif";
 import iconWhew from "/public/icons/icon-whew.gif";
 
-const iconBowGif = <Image src={iconBow} alt="bow" />;
-const iconThinkGif = <Image src={iconThink} alt="think" />;
-const iconSmileGif = <Image src={iconSmile} alt="smile" />;
-const iconBeerGif = <Image src={iconBeer} alt="beer" />;
-const iconCrackerGif = <Image src={iconCracker} alt="cracker" />;
-const iconDanceGif = <Image src={iconDance} alt="dance" />;
-const iconFlexGif = <Image src={iconFlex} alt="flex" />;
-const iconPleaseGif = <Image src={iconPlease} alt="please" />;
-const iconRogerGif = <Image src={iconRoger} alt="roger" />;
-const iconWhewGif = <Image src={iconWhew} alt="whew" />;
+const iconBowGif: React.ReactElement = (
+  <Image src={iconBow} alt="bow" height={20} width={20} />
+);
+const iconThinkGif: React.ReactElement = (
+  <Image src={iconThink} alt="think" height={20} width={20} />
+);
+const iconSmileGif: React.ReactElement = (
+  <Image src={iconSmile} alt="smile" height={20} width={20} />
+);
+const iconBeerGif: React.ReactElement = (
+  <Image src={iconBeer} alt="beer" height={20} width={20} />
+);
+const iconCrackerGif: React.ReactElement = (
+  <Image src={iconCracker} alt="cracker" height={20} width={20} />
+);
+const iconDanceGif: React.ReactElement = (
+  <Image src={iconDance} alt="dance" height={20} width={20} />
+);
+const iconFlexGif: React.ReactElement = (
+  <Image src={iconFlex} alt="flex" height={20} width={20} />
+);
+const iconPleaseGif: React.ReactElement = (
+  <Image src={iconPlease} alt="please" height={20} width={20} />
+);
+const iconRogerGif: React.ReactElement = (
+  <Image src={iconRoger} alt="roger" height={20} width={20} />
+);
+const iconWhewGif: React.ReactElement = (
+  <Image src={iconWhew} alt="whew" height={20} width={20} />
+);
 
 export {
   iconBowGif,

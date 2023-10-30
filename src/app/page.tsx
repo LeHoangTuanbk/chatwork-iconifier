@@ -3,51 +3,21 @@ import React, { ChangeEvent, useState } from "react";
 import "./styles.scss";
 import { FaRegCopy } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import { iconBowGif, iconThinkGif } from "@/components/icon";
-const textareaMaxLength = 1000;
-const textareaRows = 10;
+import callAPItoAddLabel from "@/service/openai-api";
+import { replaceWithIcons } from "@/utility";
 
 export default function Homepage() {
-  const fakeInput = `お疲れ様です。
-これからのことを真剣に考えてくれてありがとうございます。
-
-今からでも大丈夫です。
-D室も、会議室も使用中なので、廊下のテーブルで    よろしいでしょうか？`;
-
-  const fakeResultFromOpenAI = `お疲れ様です。
-これからのことを真剣に考えてくれてありがとうございます。(bow)
-
-今からでも大丈夫です。
-D室も、会議室も使用中なので、廊下のテーブルでよろしいでしょうか？(think)`;
-
   const [userInput, setUserInput] = useState<string>("");
-  const [iconifiedOutput, setIconifiedOutput] = useState<string>(``);
-  const [outputForUser, setOutputForUser] = useState<any>(``);
+  const [iconifiedOutput, setIconifiedOutput] = useState<React.ReactNode>();
+  const [outputForUser, setOutputForUser] = useState<React.ReactNode>();
 
   const handleIconify = async () => {
     // Call Open API here to classify text
-    console.log(userInput);
-
-    // Set output
-    setIconifiedOutput(fakeResultFromOpenAI);
-    let outputForUser = replaceWithIcons(fakeResultFromOpenAI);
+    let iconifiedResult: string = await callAPItoAddLabel(userInput);
+    setIconifiedOutput(iconifiedResult);
+    // Repace tect with real icons and show to user
+    let outputForUser = replaceWithIcons(iconifiedResult);
     setOutputForUser(outputForUser);
-    console.log(outputForUser);
-    // Show output to user
-  };
-
-  const replaceWithIcons = (text: string) => {
-    // Define your replacement rules here
-    const replacements: Record<string, string> = {
-      "(bow)": `<span class="icon-bow" role="img" aria-label="Bowing Icon">🙇‍♂️</span>`,
-      "(think)": `<span class="icon-think" role="img" aria-label="Thinking Icon">🤔</span>`,
-    };
-
-    // Use regular expression to find and replace patterns
-    const pattern = /\(\w+\)/g;
-    const modifiedText = text.replace(pattern, (match) => replacements[match]);
-
-    return modifiedText;
   };
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -87,8 +57,8 @@ D室も、会議室も使用中なので、廊下のテーブルでよろしい�
             className="app__input"
             placeholder="Paste your chatwork message here 🚀"
             required={true}
-            maxLength={textareaMaxLength}
-            rows={textareaRows}
+            maxLength={1000}
+            rows={10}
             onChange={handleOnChangeInput}
           />
           <div className="">
@@ -98,16 +68,12 @@ D室も、会議室も使用中なので、廊下のテーブルでよろしい�
           </div>
           <span className="app__output-header">Iconified result 💥</span>
           {outputForUser ? (
-            <div
-              className="app__output"
-              dangerouslySetInnerHTML={{ __html: outputForUser }}
-            />
+            <div className="app__output">{outputForUser}</div>
           ) : (
             <div className="app__output | place-holder">
               (Results will appear here 😊)
             </div>
           )}
-          <div>{iconThinkGif}</div>
           <button
             className="button button--copy"
             onClick={handleCopyToClipBoard}
