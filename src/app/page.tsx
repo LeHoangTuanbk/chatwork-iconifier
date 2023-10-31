@@ -82,7 +82,7 @@ export default function Homepage() {
           <button
             className="button button--copy"
             onClick={handleCopyToClipBoard}
-            // disabled={!iconifiedOutput}
+            disabled={!iconifiedOutput}
           >
             Copy <FaRegCopy />
           </button>
