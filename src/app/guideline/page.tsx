@@ -43,7 +43,7 @@ export default function GuideLine() {
             <ReactPlayer
               className="guideline__demo-video"
               url="https://youtu.be/kBkCZGeBAd0"
-              controls
+              controls={true}
               width="100%"
               height="100%"
             />
