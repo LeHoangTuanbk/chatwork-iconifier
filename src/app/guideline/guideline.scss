@@ -1,0 +1,47 @@
+@import "@/styles";
+.container {
+  .app__title {
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .guideline {
+    &__supported-icons {
+      margin-block: 3rem;
+    }
+
+    &__heading {
+      margin-block: 2rem;
+    }
+
+    &__icon-list {
+      margin-block: 2rem;
+      list-style-position: inside;
+    }
+
+    &__demo-text {
+      margin-block: 2rem;
+    }
+
+    &__demo-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.player-wrapper {
+  position: relative;
+  width: 70%;
+  min-height: 40rem;
+}
+
+@media (max-width: 767px) {
+  .player-wrapper {
+    width: 100%;
+    min-height: 25rem;
+  }
+}

@@ -1,0 +1,54 @@
+.button {
+  margin-block: 1.5rem;
+  padding: 1.2rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: $clr-primary;
+  text-transform: uppercase;
+  border: 1px solid $clr-grey;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  box-shadow: 2px 3px 4px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($clr-primary, $changing-percentage);
+    transform: scale(1.02);
+  }
+  &:active {
+    background-color: darken($clr-primary, $changing-percentage);
+    transform: active(0.98);
+  }
+
+  &--copy {
+    background-color: $clr-secondary;
+    &:hover {
+      background-color: lighten($clr-secondary, $changing-percentage);
+    }
+    &:active {
+      background-color: darken($clr-secondary, $changing-percentage);
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    background-color: black;
+  }
+}
+
+.place-holder {
+  color: $clr-grey-dark;
+  font-size: inherit;
+}
+
+.emoji-icon {
+  margin-inline: 3px;
+}
+
+.link {
+  display: block;
+  margin-block: 2rem;
+  color: $clr-primary;
+  text-decoration: underline;
+}
