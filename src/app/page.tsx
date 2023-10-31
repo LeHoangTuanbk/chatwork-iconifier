@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 import "./styles.scss";
 import { FaRegCopy } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import callAPItoAddLabel from "@/service/openai-api";
+import addLabel from "@/service/openai-api";
 import { replaceWithIcons } from "@/utility";
 
 export default function Homepage() {
@@ -13,7 +13,7 @@ export default function Homepage() {
 
   const handleIconify = async () => {
     // Call Open API here to classify text
-    let iconifiedResult: string = await callAPItoAddLabel(userInput);
+    let iconifiedResult: string = await addLabel(userInput);
     setIconifiedOutput(iconifiedResult);
     // Repace tect with real icons and show to user
     let outputForUser = replaceWithIcons(iconifiedResult);
@@ -53,17 +53,20 @@ export default function Homepage() {
       <div className="container">
         <div className="app">
           <h1 className="app__title">Iconify your chatwork messages </h1>
-          <textarea
-            className="app__input"
-            placeholder="Paste your chatwork message here 🚀"
-            required={true}
-            maxLength={1000}
-            rows={10}
-            onChange={handleOnChangeInput}
-          />
-          <button className="button" onClick={handleIconify}>
-            Iconify ✨
-          </button>
+          <form action={handleIconify}>
+            <textarea
+              className="app__input"
+              placeholder="Paste your chatwork message here 🚀"
+              required={true}
+              maxLength={1000}
+              rows={10}
+              name="userInput"
+              onChange={handleOnChangeInput}
+            />
+            <button className="button" type="submit">
+              Iconify ✨
+            </button>
+          </form>
           <span className="app__output-header">Iconified result 💥</span>
           {outputForUser ? (
             <div className="app__output">{outputForUser}</div>
