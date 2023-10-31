@@ -67,6 +67,8 @@ User text: ${userText}
 Your output:
 `;
 
+  //   return "(roger)(whew)をサポートします。";
+
   try {
     let resultFromOpenAi = await getCompletion(prompt);
     return resultFromOpenAi;
