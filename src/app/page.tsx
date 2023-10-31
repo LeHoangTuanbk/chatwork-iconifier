@@ -8,7 +8,7 @@ import SubmitButton from "@/components/submit-button";
 import "./styles.scss";
 
 export default function Homepage() {
-  const [iconifiedOutput, setIconifiedOutput] = useState<React.ReactNode>();
+  const [iconifiedOutput, setIconifiedOutput] = useState<string>();
   const [outputForUser, setOutputForUser] = useState<React.ReactNode>();
 
   const handleIconify = async (formData: FormData) => {
@@ -18,7 +18,7 @@ export default function Homepage() {
       let userInput: string = formData.get("userInput") as string;
       let iconifiedResult = await addLabel(userInput);
 
-      setIconifiedOutput(iconifiedResult);
+      setIconifiedOutput(iconifiedResult as string);
 
       let outputForUser = replaceWithIcons(iconifiedResult as string);
       setOutputForUser(outputForUser);
@@ -32,7 +32,7 @@ export default function Homepage() {
   const handleCopyToClipBoard = async () => {
     if ("clipboard" in navigator) {
       try {
-        await navigator.clipboard.writeText(iconifiedOutput);
+        await navigator.clipboard.writeText(iconifiedOutput as string);
         toast.success("Copied", {
           duration: 2000,
           position: "bottom-right",
