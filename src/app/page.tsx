@@ -5,19 +5,18 @@ import toast, { Toaster } from "react-hot-toast";
 import addLabel from "@/service/openai-api";
 import { replaceWithIcons } from "@/utility";
 import SubmitButton from "@/components/submit-button";
+import AppHeading from "@/components/app-heading";
 import "./styles.scss";
+import Link from "next/link";
 
 export default function Homepage() {
-  const [iconifiedOutput, setIconifiedOutput] = useState<string>();
+  const [iconifiedOutput, setIconifiedOutput] = useState<string>("");
   const [outputForUser, setOutputForUser] = useState<React.ReactNode>();
 
   const handleIconify = async (formData: FormData) => {
     try {
-      // Set pending to true before starting the API call
-
       let userInput: string = formData.get("userInput") as string;
       let iconifiedResult = await addLabel(userInput);
-
       setIconifiedOutput(iconifiedResult as string);
 
       let outputForUser = replaceWithIcons(iconifiedResult as string);
@@ -57,7 +56,10 @@ export default function Homepage() {
       </div>
       <div className="container">
         <div className="app">
-          <h1 className="app__title">Iconify your chatwork messages </h1>
+          <AppHeading />
+          <Link className="link" href="/guideline">
+            👉 Click here to see the guideline 📜
+          </Link>
           <form action={handleIconify}>
             <textarea
               className="app__input"
@@ -80,6 +82,7 @@ export default function Homepage() {
           <button
             className="button button--copy"
             onClick={handleCopyToClipBoard}
+            disabled={!iconifiedOutput}
           >
             Copy <FaRegCopy />
           </button>
