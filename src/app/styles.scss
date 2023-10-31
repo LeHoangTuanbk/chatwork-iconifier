@@ -28,6 +28,7 @@ $border-radius: 5px;
 
   &__input {
     display: block;
+    width: 100%;
     border: 1px solid black;
     border-radius: $border-radius;
     background-color: white;
@@ -90,6 +91,11 @@ $border-radius: 5px;
     &:active {
       background-color: darken($clr-secondary, $changing-percentage);
     }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    background-color: black;
   }
 }
 

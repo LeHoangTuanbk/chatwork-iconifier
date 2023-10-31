@@ -1,27 +1,32 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
-import "./styles.scss";
+import React, { useState } from "react";
 import { FaRegCopy } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import addLabel from "@/service/openai-api";
 import { replaceWithIcons } from "@/utility";
+import SubmitButton from "@/components/submit-button";
+import "./styles.scss";
 
 export default function Homepage() {
-  const [userInput, setUserInput] = useState<string>("");
   const [iconifiedOutput, setIconifiedOutput] = useState<React.ReactNode>();
   const [outputForUser, setOutputForUser] = useState<React.ReactNode>();
 
-  const handleIconify = async () => {
-    // Call Open API here to classify text
-    let iconifiedResult: string = await addLabel(userInput);
-    setIconifiedOutput(iconifiedResult);
-    // Repace tect with real icons and show to user
-    let outputForUser = replaceWithIcons(iconifiedResult);
-    setOutputForUser(outputForUser);
-  };
+  const handleIconify = async (formData: FormData) => {
+    try {
+      // Set pending to true before starting the API call
 
-  const handleOnChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setUserInput(e.target.value);
+      let userInput: string = formData.get("userInput") as string;
+      let iconifiedResult = await addLabel(userInput);
+
+      setIconifiedOutput(iconifiedResult);
+
+      let outputForUser = replaceWithIcons(iconifiedResult);
+      setOutputForUser(outputForUser);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      // Do something here, whether error or not
+    }
   };
 
   const handleCopyToClipBoard = async () => {
@@ -61,11 +66,8 @@ export default function Homepage() {
               maxLength={1000}
               rows={10}
               name="userInput"
-              onChange={handleOnChangeInput}
             />
-            <button className="button" type="submit">
-              Iconify ✨
-            </button>
+            <SubmitButton />
           </form>
           <span className="app__output-header">Iconified result 💥</span>
           {outputForUser ? (
