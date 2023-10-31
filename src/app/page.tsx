@@ -20,7 +20,7 @@ export default function Homepage() {
 
       setIconifiedOutput(iconifiedResult);
 
-      let outputForUser = replaceWithIcons(iconifiedResult);
+      let outputForUser = replaceWithIcons(iconifiedResult as string);
       setOutputForUser(outputForUser);
     } catch (error) {
       console.error(error);
